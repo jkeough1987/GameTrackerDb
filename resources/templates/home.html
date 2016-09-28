@@ -3,7 +3,7 @@
 <form action="/logout" method="post">
     <button type="submit">Logout</button>
 </form>
-
+Enter your Game!!<br>
 <form action="/create-game" method="post">
     <input type="text" placeholder="Game name" name="gameName" width="200"/>
     <select name="gameGenre">
@@ -23,11 +23,40 @@
     <input type="number" placeholder="Release Year" name="gameYear"/>
     <button type="submit">Submit</button>
 </form>
+<hr>
+Edit Game<br>
+<form action="/edit-game" method="post">
+    <input type="number"placeholder="Enter game id number" name="id"/>
+    <input type="text" placeholder="Game name" name="gameName" width="200"/>
+    <select name="gameGenre">
+        <option selected disabled>Genre</option>
+        <option value="adventure">Adventure</option>
+        <option value="rpg">RPG</option>
+        <option value="strategy">Strategy</option>
+        <option value="shooter">Shooter</option>
+    </select>
+    <select name="gamePlatform">
+        <option selected disabled>Platform</option>
+        <option value="pc">PC</option>
+        <option value="ps4">PS4</option>
+        <option value="xbone">XBox One</option>
+        <option value="wiiu">Wii U</option>
+    </select>
+    <input type="number" placeholder="Release Year" name="gameYear"/>
+    <button type="submit">{{hello}}</button>
+</form>
+<hr>
 
-<ol>
+
+<ul>
     {{#games}}
-    <li>{{name}} - {{genre}} - {{platform}} - {{releaseYear}}</li>
+    <li>Id: {{id}} -- Name: {{name}} -- Genre: {{genre}} -- Platform: {{platform}} -- Release Year: {{releaseYear}}
+        <form action="/delete" method="post">
+            <button type="submit">Delete</button>
+            <input type="hidden" value="{{id}}" name="id"/>
+        </form>
+    </li>
     {{/games}}
-</ol>
+</ul>
 </body>
 </html>
